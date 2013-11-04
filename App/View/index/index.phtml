@@ -1,0 +1,84 @@
+<?php
+MD_Registry::set('title_page','ورود به پنل کاربر'); 
+MD_Registry::set('page','index');
+
+?>
+<body>
+  <?php if($page=='user'){?>
+  <!-- Header -->
+  <div class="header-login"></div>
+  <!-- End Header -->
+  
+  <!-- Wrapper -->
+   <div class="wrapper">
+   <!-- Register -->
+     <!-- here -->
+     <?php //$this->render_action("user","register"); ?>
+     
+
+     <!-- Login -->
+     <div style="margin: 0px auto; float:none;" class="login font-face">
+       <h2>ورود به سیستم</h2>
+       <?php if($res=='logerror') {?>
+          <section class="error2 font-face">نام کاربری و یا رمز عبور صحیح نمی باشد</section>
+       <?php } ?>
+       <form name="login-user" action="<?php echo $this->baseurl ; ?>/user/login" method="post" >
+         <label class="size1"><span class="font-face">نام کاربری</span><input type="text"   name="us" value="" class="font-face"/></label>
+         <label class="size1"><span class="font-face">رمز عبور</span><input type="password" name="ps" value="" class="font-face"/></label>
+         <span><a href="<?php echo $this->baseurl ; ?>/user/recover">رمز عبور</a> را فراموش کرده اید؟</span>
+         <input type="submit" value="ورود" class="btn font-face enter" name='logUser' /> 
+       </form>
+       <script type="text/javascript">
+			 var frmvalidator = new Validator("login-user");
+			frmvalidator.addValidation("us","req","نام کاربری را وارد نمایید");
+			frmvalidator.addValidation("ps","req","پسورد را وارد نمایید");	
+		    //frmvalidator.addValidation("us","req","کد ملی را وارد نمایید .");
+		    //frmvalidator.addValidation("us","num","برای کدملی عدد وارد نمایید .");
+		    //frmvalidator.addValidation("us","Maxlen=10","کد ملی 10رقمی وارد نمایید .");
+		    //frmvalidator.addValidation("us","minlen=10","کد ملی 10رقمی وارد نمایید .");	 
+			frmvalidator.EnableMsgsTogether();
+   
+	   </script>
+     </div>
+      <div class="footer" style="text-align: center;"><a href="http://ashena.net/"><img src="<?php echo $this->baseurl ;?>/images/ashena_group.png" alt="آشنا" /></a></div>
+     <div class="clear"></div>
+   </div>
+  <!-- End Wrapper -->
+  <?php
+  }elseif($page=="admin"){ ?>
+  <!-- Header -->
+  <div class="header-login"></div>
+  <!-- End Header -->
+  
+  <!-- Wrapper -->
+   <div class="wrapper">
+     
+     <!-- Login -->
+     <div class="login font-face" id="login-admin">
+       <h2>ورود به سیستم</h2>
+       <?php if($reg_res=$res=='not'){ ?>
+        <section class="error2 font-face">نام کاربری یا رمز عبور صحیح نمی باشد.</section>
+      <?php } ?>
+       <span>لطفاً نام کاربری و رمز عبور خود را وارد کنید.</span>
+       <form name="login-user" action="<?php echo $this->baseurl ; ?>/admin/login" method="post" >
+         <label class="size1"><span class="font-face">نام کاربری</span><input type="text"   name="us" value="" class="font-face"/></label>
+         <label class="size1"><span class="font-face">رمز عبور</span><input type="password" name="ps" value="" class="font-face"/></label>
+         <span><a href="<?php echo $this->baseurl ; ?>/admin/recover ">رمز عبور</a>را فراموش کرده اید؟</span>
+        
+         <input type="submit" value="ورود" class="btn font-face enter" name="logAdmin" /> 
+       </form>
+       <script type="text/javascript">
+       var frmvalidator = new Validator("login-user");
+       frmvalidator.addValidation("us","req","نام کاربری را وارد نمایید");
+       frmvalidator.addValidation("ps","req","پسورد را وارد نمایید");      
+       frmvalidator.EnableMsgsTogether();
+   
+     </script>
+     </div>
+    <div class="footer" id="footer-admin"><a href="http://ceeeb.com/"><img src="<?php echo $this->baseurl ; ?>//images/logo-footer.png" alt="آشنا" /></a></div>
+     <div class="clear"></div>
+   </div>
+  <?php
+  } ?>
+</body>
+</html>
